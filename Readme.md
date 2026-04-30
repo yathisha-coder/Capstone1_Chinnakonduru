@@ -50,3 +50,4 @@ The application reads and writes data from a CSV file and provides a menu-driven
 ##  File Format
 
 Transactions are stored in:
+Date | Time | Description | Vendor | Amount
