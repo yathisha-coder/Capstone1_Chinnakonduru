@@ -3,15 +3,23 @@ package org.example;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/** Represents a single financial transaction in the ledger system.
+ * This is the data model used in the application.
+ */
 public class Transaction {
     //properties
+    /*Date when the transaction occurred
+    * Time when the transaction occurred
+    * Description of the transaction(eg:"Salary","Groceries")
+    * Vendor or source of the transaction
+    * Amount of the transaction (positive= Deposit, negative= payment) */
     private LocalDate date;
     private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
-    //Constructors
+    //Constructors used for to create a new transaction object
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
