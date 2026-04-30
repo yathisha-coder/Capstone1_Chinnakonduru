@@ -110,7 +110,7 @@ public class LedgerService {
             System.out.println("3.Year To Date");
             System.out.println("4.Previous Year");
             System.out.println("5.Search by Vendor");
-//            System.out.println("6.Custom Search");
+            System.out.println("6.Custom Search");
             System.out.println("7.Back");
             System.out.println("Enter you're Option: ");
             int input = Integer.parseInt(scan.nextLine());
@@ -131,9 +131,9 @@ public class LedgerService {
                 case 5:
                     searchByVendor(scan, transactions);
                     break;
-//                case 6:
-//                    showsCustomerSearch(scan, transactions);
-//                    break;
+                case 6:
+                    showsCustomerSearch(scan, transactions);
+                    break;
                 case 7:
                     return;
                 default:
@@ -213,66 +213,68 @@ public class LedgerService {
         displayFormat(result);
     }
 
-//    public static void showsCustomerSearch(Scanner scan, List<Transaction> transactions) {
-//
-//        System.out.println("Start Date (YYYY-MM-DD or blank): ");
-//        String startInput = scan.nextLine();
-//
-//        System.out.println("End Date (YYYY-MM-DD or blank): ");
-//        String endInput = scan.nextLine();
-//
-//        System.out.println("Description (or blank): ");
-//        String description = scan.nextLine().trim().toLowerCase();
-//
-//        System.out.println("Vendor (or blank): ");
-//        String vendor = scan.nextLine().trim().toLowerCase();
-//
-//        System.out.println("Amount (or blank): ");
-//        String amountInput = scan.nextLine();
-//
-//        List<Transaction> results = new ArrayList<>();
-//
-//        for (Transaction transaction : transactions) {
-//            boolean match = true;
-//            // Start Date
-//            if (!startInput.isEmpty()) {
-//                LocalDate startDate = LocalDate.parse(startInput);
-//                if (transaction.getDate().isBefore(startDate)) {
-//                    match = false;
-//                }
-//            }
-//
-//            // End Date
-//            if (!endInput.isEmpty()) {
-//                LocalDate endDate = LocalDate.parse(endInput);
-//                if (transaction.getDate().isAfter(endDate)) {
-//                    match = false;
-//                }
-//            }
-//
-//            // Description
-//            if (!description.isEmpty()) {
-//                if (!transaction.getDescription().toLowerCase().contains(description.toLowerCase())) {
-//                    match = false;
-//                }
-//            }
-//
-//            // Vendor
-//            if (!vendor.isEmpty()) {
-//                if (!transaction.getVendor().toLowerCase().contains(vendor.toLowerCase())) {
-//                    match = false;
-//                }
-//            }
-//
-//            // Amount
-//            if (!amountInput.isEmpty()) {
-//                double amount = Double.parseDouble(amountInput);
-//                if (transaction.getAmount() != amount) {
-//                    match = false;
-//                }
-//            }
-//
-//        }
-//        displayFormat(results);
-//    }
+    public static void showsCustomerSearch(Scanner scan, List<Transaction> transactions) {
+
+        System.out.println("Start Date (YYYY-MM-DD or blank): ");
+        String startInput = scan.nextLine();
+
+        System.out.println("End Date (YYYY-MM-DD or blank): ");
+        String endInput = scan.nextLine();
+
+        System.out.println("Description (or blank): ");
+        String description = scan.nextLine().trim().toLowerCase();
+
+        System.out.println("Vendor (or blank): ");
+        String vendor = scan.nextLine().trim().toLowerCase();
+
+        System.out.println("Amount (or blank): ");
+        String amountInput = scan.nextLine();
+
+        List<Transaction> results = new ArrayList<>();
+
+        for (Transaction transaction : transactions) {
+            boolean match = true;
+            // Start Date
+            if (!startInput.isEmpty()) {
+                LocalDate startDate = LocalDate.parse(startInput);
+                if (transaction.getDate().isBefore(startDate)) {
+                    match = false;
+                }
+            }
+
+            // End Date
+            if (!endInput.isEmpty()) {
+                LocalDate endDate = LocalDate.parse(endInput);
+                if (transaction.getDate().isAfter(endDate)) {
+                    match = false;
+                }
+            }
+
+            // Description
+            if (!description.isEmpty()) {
+                if (!transaction.getDescription().toLowerCase().contains(description.toLowerCase())) {
+                    match = false;
+                }
+            }
+
+            // Vendor
+            if (!vendor.isEmpty()) {
+                if (!transaction.getVendor().toLowerCase().contains(vendor.toLowerCase())) {
+                    match = false;
+                }
+            }
+
+            // Amount
+            if (!amountInput.isEmpty()) {
+                double amount = Double.parseDouble(amountInput);
+                if (transaction.getAmount() != amount) {
+                    match = false;
+                }
+            }
+                if (match) {
+                   results.add(transaction);
+               }
+            }
+                displayFormat(results);
+    }
 }
